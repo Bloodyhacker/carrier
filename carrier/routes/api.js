@@ -101,7 +101,7 @@ router.post('add-user', function(req, res) {
     username: req.body.username,
     password: hash
   });
-  AdminUser.save(fuction(err) {
+  AdminUser.save(function(err) {
     if (!err) {
       return res.send('Admin User successfully created');
     } else {
@@ -116,7 +116,7 @@ router.post('/login', function(req, res) {
 
   adminUser.findOne({
     username: username
-  }, fuction(err, data) {
+  }, function(err, data) {
     if (err | data === null) {
       return res.send(401, "User Doesn't exist");
     } else {

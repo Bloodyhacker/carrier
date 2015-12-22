@@ -29,8 +29,12 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.cookieParser('secret'));
-app.use(session());
+app.use(cookieParser('secret'));
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true
+}));
 
 app.use('/api', api);
 app.use('/users', users);
